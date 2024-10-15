@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Assignment-06</title>
+
+    <!-- font awesome -->
+    <script src="https://kit.fontawesome.com/56e3a77e4a.js" crossorigin="anonymous"></script>
+
+    <!-- cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/daisyui@4.12.12/dist/full.min.css" rel="stylesheet" type="text/css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Updock&display=swap" rel="stylesheet">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        .updock {
+            font-family: "Updock", cursive;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        .lato {
+            font-family: "Lato", sans-serif;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        #spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 0, 0, 0.1);
+            border-top: 4px solid #000;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin: 20px auto;
+        }
+    </style>
+
+</head>
+
+<body class="lato ">
+
+    <header class="md:w-11/12 mx-auto px-1 py-5">
+        <nav>
+            <div class="navbar bg-base-100">
+                <div class="navbar-start">
+                    <div class="dropdown">
+                        <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h8m-8 6h16" />
+                            </svg>
+                        </div>
+                        <ul tabindex="0"
+                            class="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow">
+                            <li><a>Home</a></li>
+                            <li><a>Shop</a></li>
+                            <li><a>Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="flex items-center ">
+                        <img class="" src="images/logo.webp" alt="">
+                        <a class="btn btn-ghost text-2xl">Peddy</a>
+                    </div>
+                </div>
+                <div class="navbar-center hidden lg:flex">
+                    <ul class="menu menu-horizontal px-1">
+                        <li><a>Home</a></li>
+                        <li><a>Shop</a></li>
+                        <li><a>Contact</a></li>
+                    </ul>
+                </div>
+                <div class="navbar-end">
+                    <a class="text-2xl shadow-lg rounded-full px-3 py-2 border "><i class="fa-solid fa-user"></i></a>
+                </div>
+            </div>
+        </nav>
+
+        <section class="text-center my-10 ">
+            <h4 class="font-bold text-xl text-gray-400">Bringing Families Together ❤️‍🔥</h4>
+            <h1 class="text-6xl font-bold  my-5">Your Path to Adoption <br> Starts Here</h1>
+            <p class="text-[#131313]">We connect loving families with their perfect furry friends, making adoption easy and fulfilling. <br> Explore our wide range of pets and find your new companion today.</p>
+            <button class="btn btn-active btn-accent my-4"> <a href="#categoriesContainer">View More</a></button>
+            <div class="flex  justify-center items-center">
+                <img class=" text-center" src="images/pet.webp" alt="">
+
+            </div>
+        </section>
+    </header>
+    <main class="md:w-11/12 mx-auto px-1 py-5">
+        <!-- Adopt  Your  Best Friend -->
+        <section>
+            <div class="text-center ">
+                <h2 class="text-[#131313] text-4xl font-semibold">Adopt Your Best Friend</h2>
+                <p class="text-gray-500 my-3">We believe every pet deserves a loving home. Discover the joy of pet adoption with Peddy, where we help you find <br> a loyal companion to share your life with. Start your journey today and meet your new best friend.</p>
+
+            </div>
+
+            <!-- categories -->
+            <div class="my-9 grid grid-cols-1 md:grid-cols-2 gap-4 lg:flex justify-between" id="categoriesContainer">
+
+            </div>
+
+
+        </section>
+        <!-- display pets -->
+        <section id="" class="">
+            <div class="flex justify-around lg:justify-between items-center my-4">
+                <h4 class="text-2xl font-semibold">Best Deal For you</h4>
+                <button id="sortBtn" onclick="shortBtn()" class="btn btn-success">Sort by Price</button>
+
+                <!--adopt modal -->
+                <!-- Open the modal using ID.showModal() method -->
+                <button class="btn hidden" onclick="adoptModal.showModal()">open modal</button>
+                <dialog id="modalAdopt" class="modal modal-bottom sm:modal-middle">
+                    <div id="adoptModal" class="modal-box text-center">
+
+                        <div class="modal-action">
+                            <form method="dialog">
+                                <!-- if there is a button in form, it will close the modal -->
+                                <button class="btn ">Close</button>
+                            </form>
+                        </div>
+                    </div>
+                </dialog>
+            </div>
+
+
+
+            <!-- pet container -->
+            <div id="pContainer" class="lg:flex gap-4 my-10 ">
+                <!-- spinner -->
+                <div id="spinner" class="hidden"></div>
+                <!-- pet -->
+                <div id="displayPets"
+                    class="lg:w-3/4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 border rounded-xl p-4">
+
+
+
+                </div>
+                <!-- like -->
+                <div id="likeContainer"
+                    class="lg:w-1/4 grid grid-cols-2 row-span-3 p-3 border rounded-xl gap-4 place-content-start">
+                    <h3 class="updock text-5xl text-end  font-extrabold ">Like</h3>
+                    <h3 class="updock text-5xl text-start font-extrabold ">History:</h3>
+
+
+
+
+                </div>
+
+            </div>
+            <!-- modal -->
+            <button class="btn hidden" onclick="customModal.showModal()">open modal</button>
+            <dialog id="customModal" class="modal modal-bottom sm:modal-middle">
+                <div id="modalContent" class="modal-box">
+
+
+                </div>
+                </div>
+            </dialog>
+
+        </section>
+    </main>
+    <footer class="w-full">
+        <footer
+            class=" footer items-center justify-center grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 bg-neutral text-neutral-content lg:pl-60 p-10">
+            <nav>
+                <div class="flex items-center ">
+                    <img class="" src="images/logo.webp" alt="">
+                    <a class="btn btn-ghost text-2xl">Peddy</a>
+                </div>
+                <a class="">Location: av. Washington 165, NY CA 54003</a>
+                <a class="">Phone: +31 85 964 47 25</a>
+                <a class="">Email: info@yourdomain.com</a>
+                <a class="">Openings hours: 9.00 AM - 5.00 PM</a>
+                <div class="text-2xl">
+                    <i class="fa-brands fa-facebook mr-3 link-hover"></i>
+                    <i class="fa-brands fa-x-twitter mr-3 link-hover"></i>
+                    <i class="fa-brands fa-youtube mr-3 link-hover"></i>
+                    <i class="fa-brands fa-instagram link-hover"></i>
+                </div>
+            </nav>
+            <nav>
+                <h6 class="footer-title">Useful Links</h6>
+                <a class="link link-hover">Home</a>
+                <a class="link link-hover">About us</a>
+                <a class="link link-hover">Animals</a>
+                <a class="link link-hover">Foundation</a>
+                <a class="link link-hover">Contact</a>
+            </nav>
+            <nav>
+                <h6 class="footer-title">Drop a Message</h6>
+                <input
+                type="text"
+                placeholder="Enter your email"
+                class="input input-bordered join-item bg-gray-700" />
+              <button class="btn bg-[#0E7A81]  join-item border-none text-white hover:text-black w-full my-2">Subscribe</button>
+            </nav>
+        </footer>
+    </footer>
+
+
+
+
+
+
+    <!-- script -->
+    <script src="js/index.js"></script>
+</body>
+
+</html>
